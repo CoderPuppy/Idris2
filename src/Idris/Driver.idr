@@ -79,6 +79,8 @@ updateEnv
          Just cwd <- coreLift $ currentDir
               | Nothing => throw (InternalError "Can't get current directory")
          addLibDir cwd
+         defs <- get Ctxt
+         coreLift $ putStrLn $ toString $ dirs $ options defs
 
 updateREPLOpts : {auto o : Ref ROpts REPLOpts} ->
                  Core ()
